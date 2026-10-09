@@ -148,10 +148,12 @@ The steps are:
 1. The customer runs `Gas Station Management.exe`. The activation window appears and shows the hardware ID of that specific machine.
 2. The customer clicks **Copy** and sends the ID to support (email or messaging app — no internet connection is required on the app side).
 3. Support generates a signed `.license` file bound to that ID and sends it back.
-4. The customer **must rename the file to `gas_station.license`** and place it inside the `GasStationManager` folder — the same folder that contains the `.exe`.
+4. Support saves the license file under the exact name **gas_station.license** and sends it to the customer and customer place it inside the `GasStationManager` folder — the same folder that contains the `.exe`.
 5. On the next launch, the app validates the license file and opens normally. No internet check, no login, no activation code to retype.
 
-> **Note for reviewers:** the license file name matters. If the file is not named exactly `gas_station.license` and is not placed next to the executable, the app will treat the machine as unlicensed and refuse to start. This is intentional — it makes the license file easy to spot and easy to back up.
+**Note for reviewers**: the license file name matters and must be exactly gas_station.license. Support saves and sends the file under this exact name. To run the app, this file must be placed inside the GasStationManager folder — the same folder that contains the .exe. If the name is anything else, or if the file is not in this folder, the app will treat the machine as unlicensed and refuse to start. Since the license generator is included in this repository under support-tools/, anyone with access to this repo can issue a valid license and drop it into the app folder under that name to run the build.
+
+
 
 The seller side uses a small internal tool to generate and track these license files:
 
