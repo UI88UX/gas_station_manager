@@ -40,9 +40,9 @@ One shift could take an hour or more. With two shifts a day, that is real time l
 - **Temporary save.** The next auditor can close the app and pick up where the previous one left off.
 - **Hardware-locked license.** Each customer gets a license file bound to their machine's hardware ID. No internet check required.
 
-A note on accuracy: **calculation errors are eliminated.** The app does every arithmetic operation. What remains is the possibility of a wrong *input* — if the auditor types 1234 instead of 12345, the app cannot detect that. That is why the printed PDF is still part of the workflow: the auditor reads it before signing.
-
 ![License manager](docs/License%20Manager.png)
+
+A note on accuracy: **calculation errors are eliminated.** The app does every arithmetic operation. What remains is the possibility of a wrong *input* — if the auditor types 1234 instead of 12345, the app cannot detect that. That is why the printed PDF is still part of the workflow: the auditor reads it before signing.
 
 ---
 
@@ -65,8 +65,6 @@ A minimal data layer is in place (JSON files in `data/`), so if the customer eve
 ### Why offline
 
 Fuel stations in the target market often have unreliable internet. Any dependency on a remote server would have been a support burden. The whole app runs without a network connection.
-
-![License generator](docs/License%20Generator.png)
 
 ---
 
@@ -137,6 +135,8 @@ The customer can replace `asset/logo.png` and `fonts/Vazir.ttf` with their own w
 ## License model
 
 Each installation generates a hardware ID from the machine's name, MAC address, CPU, core count, and disk serial number, hashed with SHA-512. The customer copies this ID, sends it to support, and receives a signed `.license` file that is bound to that machine and carries an expiry date.
+
+![License generator](docs/License%20Generator.png)
 
 This was a deliberate choice: the target customers are small businesses that may not have reliable internet, so any phone-home activation would be brittle. A file-based model works offline and survives re-installations on the same machine.
 
